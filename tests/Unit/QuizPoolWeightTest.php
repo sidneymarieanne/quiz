@@ -11,7 +11,7 @@ class QuizPoolWeightTest extends TestCase
     use RefreshDatabase, WithFaker, HelperTrait;
 
     /** @test */
-    public function testAWeightIsAssociatedToTheQuizPoolRelationship()
+    public function testWeightIsAssociatedToTheQuizPoolRelationship()
     {
         $quiz = $this->createRandomValidQuizzes()->first();
         foreach ($quiz->pools as $pool) {

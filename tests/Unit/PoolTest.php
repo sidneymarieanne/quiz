@@ -13,7 +13,7 @@ class PoolTest extends TestCase
     use RefreshDatabase, WithFaker, HelperTrait;
 
     /** @test */
-    public function testAPoolCanHaveManyQuestions()
+    public function testPoolCanHaveManyQuestions()
     {
         $pool = factory(Pool::class)->create();
         $this->assertEquals(0, $pool->questions()->count());
@@ -28,7 +28,7 @@ class PoolTest extends TestCase
     }
 
     /** @test */
-    public function testAQuestionCanNotBelongToManyPools()
+    public function testQuestionCanNotBelongToManyPools()
     {
         $pool1 = factory(Pool::class)->create();
         $pool2 = factory(Pool::class)->create();
@@ -44,14 +44,14 @@ class PoolTest extends TestCase
     }
 
     /** @test */
-    public function testAPoolWithoutQuestionIsNotValid()
+    public function testPoolWithoutQuestionIsNotValid()
     {
         $pool = factory(Pool::class)->create();
         $this->assertFalse($pool->isValid());
     }
 
     /** @test */
-    public function testAPoolOfOneValidQuestionIsValid()
+    public function testPoolOfOneValidQuestionIsValid()
     {
         $pool = factory(Pool::class)->create();
         $pool->questions()->saveMany(
@@ -61,7 +61,7 @@ class PoolTest extends TestCase
     }
 
     /** @test */
-    public function testAPoolOfManyValidQuestionsIsValid()
+    public function testPoolOfManyValidQuestionsIsValid()
     {
         $pool = factory(Pool::class)->create();
         $pool->questions()->saveMany(
@@ -71,7 +71,7 @@ class PoolTest extends TestCase
     }
 
     /** @test */
-    public function testAPoolOfManyValidQuestionsAndOneNotValidIsNotValid()
+    public function testPoolOfManyValidQuestionsAndOneNotValidIsNotValid()
     {
         $pool = factory(Pool::class)->create();
         $question = factory(Question::class)->create();

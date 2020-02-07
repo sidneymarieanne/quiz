@@ -13,7 +13,7 @@ class QuizTest extends TestCase
     use RefreshDatabase, WithFaker, HelperTrait;
 
     /** @test */
-    public function testAQuizCanHaveManyPools()
+    public function testQuizCanHaveManyPools()
     {
         $quiz = factory(Quiz::class)->create();
         $this->assertEquals(0, $quiz->pools()->count());
@@ -28,7 +28,7 @@ class QuizTest extends TestCase
     }
 
     /** @test */
-    public function testAPoolCanBelongToManyQuizzes()
+    public function testPoolCanBelongToManyQuizzes()
     {
         $quiz1 = factory(Quiz::class)->create();
         $quiz2 = factory(Quiz::class)->create();
@@ -53,7 +53,7 @@ class QuizTest extends TestCase
     }
 
     /** @test */
-    public function testAQuizWithAnyUnvalidPoolIsNotValid()
+    public function testQuizWithAnyUnvalidPoolIsNotValid()
     {
         $quiz = $this->createRandomValidQuizzes()->first();
         $quiz->pools()->attach([
@@ -64,7 +64,7 @@ class QuizTest extends TestCase
     }
 
     /** @test */
-    public function testAValidQuizMustHaveAtLeastOneQuestion()
+    public function testValidQuizMustHaveAtLeastOneQuestion()
     {
         $quiz = $this->createRandomValidQuizzes()->first();
         $quiz->nb_questions = 0;
@@ -74,7 +74,7 @@ class QuizTest extends TestCase
     }
 
     /** @test */
-    public function testAValidQuizMustNotHaveMoreQuestionsThanItsPoolsTotalNbOfQuestions()
+    public function testValidQuizMustNotHaveMoreQuestionsThanItsPoolsTotalNbOfQuestions()
     {
         $quiz = $this->createRandomValidQuizzes()->first();
         $quiz->nb_questions = $quiz->max_nb_questions + 1;

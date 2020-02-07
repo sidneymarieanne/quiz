@@ -5,6 +5,7 @@
          backupStaticAttributes="false"
          bootstrap="vendor/autoload.php"
          colors="true"
+         printerClass="Sempro\PHPUnitPrettyPrinter\PrettyPrinter"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
@@ -33,5 +34,6 @@
         <server name="MAIL_DRIVER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
+        <env name="PHPUNIT_PRETTY_PRINT_PROGRESS" value="true"/>
     </php>
 </phpunit>

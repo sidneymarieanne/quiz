@@ -13,7 +13,7 @@ class QuestionsTest extends TestCase
     use RefreshDatabase, WithFaker, HelperTrait;
 
     /** @test */
-    public function testAQuestionCanHaveManyAnswers()
+    public function testQuestionCanHaveManyAnswers()
     {
         $question = factory(Question::class)->create();
         $this->assertEquals(0, $question->answers()->count());
@@ -28,14 +28,14 @@ class QuestionsTest extends TestCase
     }
 
     /** @test */
-    public function testAQuestionWithoutAnswerIsNotValid()
+    public function testQuestionWithoutAnswerIsNotValid()
     {
         $question = factory(Question::class)->create();
         $this->assertFalse($question->isValid());
     }
 
     /** @test */
-    public function testAQuestionWithOnlyOneAnswerIsNotValid()
+    public function testQuestionWithOnlyOneAnswerIsNotValid()
     {
         $question = factory(Question::class)->create();
         $answer = $this->createWrongAnswer();
@@ -49,7 +49,7 @@ class QuestionsTest extends TestCase
     }
 
     /** @test */
-    public function testAQuestionWithoutAnyCorrectAnswerIsNotValid()
+    public function testQuestionWithoutAnyCorrectAnswerIsNotValid()
     {
         $question = factory(Question::class)->create();
         $answers = [
@@ -61,7 +61,7 @@ class QuestionsTest extends TestCase
     }
 
     /** @test */
-    public function testAQuestionWithAtLeastOneCorrectAnswerIsValid()
+    public function testQuestionWithAtLeastOneCorrectAnswerIsValid()
     {
         $question = factory(Question::class)->create();
         $correctAnswer = $this->createCorrectAnswer();
@@ -72,7 +72,7 @@ class QuestionsTest extends TestCase
     }
 
     /** @test */
-    public function testAQuestionWithOnlyCorrectAnswersIsValid()
+    public function testQuestionWithOnlyCorrectAnswersIsValid()
     {
         $question = factory(Question::class)->create();
         $correctAnswers = [
